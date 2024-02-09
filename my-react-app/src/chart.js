@@ -1,8 +1,10 @@
 import "./css.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Char from "./selection";
+import { useNavigate } from "react-router-dom";
+import { nameset } from "./store";
 
 const App = () => {
   const [salary, setSalary] = useState("");
@@ -19,6 +21,8 @@ const App = () => {
   const [selectedMonth, setSelectedMonth] = useState("January");
   const [chart, setChart] = useState();
   const [obbb, setObbb] = useState({});
+  const fun = useDispatch();
+  const nav = useNavigate();
   console.log(selectedMonth);
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +57,11 @@ const App = () => {
         <div>
           <ul className="ul_in_table">
             {expensoves.map((ar, index) => (
-              <li className="permonth" key={index} style={{display:selectedMonth==ar[0]?"block":"none"}}>
+              <li
+                className="permonth"
+                key={index}
+                style={{ display: selectedMonth == ar[0] ? "block" : "none" }}
+              >
                 <div className="table_in_mounth"> {ar[0]}</div>
                 <div>
                   <ul>
@@ -113,7 +121,7 @@ const App = () => {
         reason: exp,
         amount: am,
       };
-      
+
       setChart(<Char value={ob} />);
     } catch {
       const b = expensoves.filter((a) => a[0] === selectedMonth)[0];
@@ -121,12 +129,17 @@ const App = () => {
       setChart(<div>no expensives in {b}</div>);
     }
   }, [selectedMonth, expensoves]);
-
+  const logout = () => {
+    fun(nameset(""));
+    console.log("i am ri");
+    nav("/");
+  };
   return (
     <>
+      <button  className="logut" onClick={logout}>log out</button>
       <div className="root">
         <div className="user">
-          <div>username  {userna}</div>
+          <div>username {userna}</div>
           <div>you monthly salary is Rs {fiexedsalary}</div>{" "}
           <button
             className="button_for_change_salaary"
@@ -136,40 +149,42 @@ const App = () => {
           </button>
         </div>
         {/* user inform */}
-        <div className="char_and_table"><div className="tableout">
-          {table && <div className="table">{table}</div>}{" "}
-          {!addexpensives && (
-            <button
-              style={{ width: "10vw" }}
-              onClick={() => setAddexpensives(true)}
-            >
-              add expensives
-            </button>
-          )}
-        </div>
+        <div className="char_and_table">
+          <div className="tableout">
+            {table && <div className="table">{table}</div>}{" "}
+            {!addexpensives && (
+              <button
+                style={{ width: "10vw" }}
+                onClick={() => setAddexpensives(true)}
+              >
+                add expensives
+              </button>
+            )}
+          </div>
 
-        <div className="chartname">
-          <div>
-            <select value={selectedMonth} onChange={handleChange}>
-              <option value="select"></option>
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
-            </select>
+          <div className="chartname">
             <div>
-              <div>{chart}</div>
+              <select value={selectedMonth} onChange={handleChange}>
+                <option value="select"></option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+              <div>
+                <div>{chart}</div>
+              </div>
             </div>
           </div>
-        </div></div>
+        </div>
 
         {addexpensives && (
           <div className="change_expens">
@@ -203,7 +218,10 @@ const App = () => {
                 onChange={(event) => setExpamount(event.target.value)}
               />
               <br />
-              <div onClick={() => setAddexpensives(false)} > <button onClick={addtheexpensives}>add</button></div>
+              <div onClick={() => setAddexpensives(false)}>
+                {" "}
+                <button onClick={addtheexpensives}>add</button>
+              </div>
               <button onClick={() => setAddexpensives(false)}>dont want</button>
             </div>
           </div>
@@ -214,10 +232,17 @@ const App = () => {
               type="number"
               value={salary}
               onChange={(e) => setSalary(e.target.value)}
-              style={{width:"10vw"}}
+              style={{ width: "10vw" }}
             />
-            <button  style={{width:"10vw"}} onClick={setsal}>change</button>
-            <button  style={{width:"10vw"}} onClick={() => setChangemonthamount(false)}>close</button>
+            <button style={{ width: "10vw" }} onClick={setsal}>
+              change
+            </button>
+            <button
+              style={{ width: "10vw" }}
+              onClick={() => setChangemonthamount(false)}
+            >
+              close
+            </button>
           </div>
         )}
       </div>

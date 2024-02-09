@@ -1,0 +1,140 @@
+.root {
+  background: linear-gradient(to right, rgb(51, 24, 24), rgb(24, 24, 50));
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  height: 100vh;
+  align-items: center;
+  gap: 10vh;
+}
+.char_and_table {
+  display: flex;
+}
+.user {
+  width: 100vw;
+  height: 20vh;
+}
+.ul_in_table {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.table {
+  height: 80vh;
+  width: 40vw;
+
+  border-radius: 2vw;
+  display: flex;
+  justify-content: center;
+}
+.table::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.table_in_mounth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+li {
+  list-style-type: none; /* Hide the marker */
+}
+.permonth {
+  width: 20vw;
+  border-radius: 2vh;
+}
+.tableout {
+  height: 50vh;
+  width: 50vw;
+
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.chartname {
+  width: 45vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.namerate {
+  width: 14vw;
+
+  display: flex;
+}
+.namer {
+  width: 10vw;
+
+  display: flex;
+}
+.rate {
+  width: 7vw;
+
+  display: flex;
+}
+.chatoutdiv {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.red {
+  height: 100px;
+}
+
+.button_for_change_salaary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13vw;
+}
+.change_expens {
+  position: absolute;
+
+  width: 20vw;
+  background: linear-gradient(to right, rgb(51, 24, 24), rgb(24, 24, 50));
+  border-radius: 20%;
+  display: flex;
+  transform: translate(0%, 50%);
+  align-items: center;
+  flex-direction: column;
+}
+.change_salary {
+  position: absolute;
+
+  width: 20vw;
+  height: 50vh;
+  background: linear-gradient(to right, rgb(51, 24, 24), rgb(24, 24, 50));
+  border-radius: 20%;
+  display: flex;
+  transform: translate(0%, 50%);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.login_cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  height: 100vh;
+  width: 100vw;
+  color: hsl(180, 57%, 58%);
+  background: radial-gradient(circle,rgb(51, 24, 24), rgb(24, 24, 50));
+  /* background: linear-gradient(to right, rgb(51, 24, 24), rgb(24, 24, 50)); */
+}
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+  height: 50vh;
+  width: 20vw;
+  color: rgb(85, 190, 190);
+  border-radius: 10%;
+  background: linear-gradient(to right, rgb(50, 51, 24), rgb(50, 24, 24));
+}

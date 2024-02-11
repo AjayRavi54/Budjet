@@ -20,10 +20,10 @@ const App = () => {
   const [render, setRender] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("January");
   const [chart, setChart] = useState();
-  const [obbb, setObbb] = useState({});
+  const [ren1, setrend1] = useState(true);
   const fun = useDispatch();
   const nav = useNavigate();
-  console.log(selectedMonth);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,7 +54,7 @@ const App = () => {
   useEffect(() => {
     if (expensoves.length > 0) {
       setTable(
-        <div>
+        <div className="table_next">
           <ul className="ul_in_table">
             {expensoves.map((ar, index) => (
               <li
@@ -70,6 +70,11 @@ const App = () => {
                         <div className="namerate">
                           <div className="namer">{a[0]}</div>
                           <div className="rate">{a[1]}rs</div>
+                          <div>
+                            <button onClick={() => todel(index, subIndex)}>
+                              X
+                            </button>
+                          </div>
                         </div>
                       </li>
                     ))}
@@ -84,6 +89,7 @@ const App = () => {
       setTable(null);
     }
   }, [expensoves, render]);
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -95,7 +101,7 @@ const App = () => {
       reason: Expreason,
       amount: Expamount,
     });
-    console.log(req.data);
+
     if (req.data) {
       setRender(!render);
     }
@@ -116,7 +122,7 @@ const App = () => {
         .map((c) => c[1]);
       const ba_sal = fiexedsalary - am.reduce((d, e) => e + d);
       exp.unshift("salary");
-      am.unshift(parseInt(fiexedsalary));
+      am.unshift(ba_sal);
       let ob = {
         reason: exp,
         amount: am,
@@ -125,22 +131,34 @@ const App = () => {
       setChart(<Char value={ob} />);
     } catch {
       const b = expensoves.filter((a) => a[0] === selectedMonth)[0];
-      console.log(b);
       setChart(<div>no expensives in {b}</div>);
     }
   }, [selectedMonth, expensoves]);
   const logout = () => {
     fun(nameset(""));
-    console.log("i am ri");
+
     nav("/");
+  };
+  const todel = async (ind1, ind2) => {
+    let ans = await axios.post("http://localhost:5000/todel", {
+      i: ind1,
+      d: ind2,
+      name: userna,
+    });
+    if (ans.data == "ok") {
+      setRender(!render);
+    }
   };
   return (
     <>
-      <button  className="logut" onClick={logout}>log out</button>
+      <button className="logut" onClick={logout}>
+        log out
+      </button>
       <div className="root">
         <div className="user">
           <div>username {userna}</div>
           <div>you monthly salary is Rs {fiexedsalary}</div>{" "}
+          
           <button
             className="button_for_change_salaary"
             onClick={() => setChangemonthamount(true)}
@@ -148,13 +166,15 @@ const App = () => {
             change the salary amount
           </button>
         </div>
+        
         {/* user inform */}
         <div className="char_and_table">
           <div className="tableout">
             {table && <div className="table">{table}</div>}{" "}
             {!addexpensives && (
               <button
-                style={{ width: "10vw" }}
+              className="button_in_addexp"
+                
                 onClick={() => setAddexpensives(true)}
               >
                 add expensives
@@ -163,7 +183,7 @@ const App = () => {
           </div>
 
           <div className="chartname">
-            <div>
+            <div className="charname_in">
               <select value={selectedMonth} onChange={handleChange}>
                 <option value="select"></option>
                 <option value="January">January</option>
@@ -179,9 +199,9 @@ const App = () => {
                 <option value="November">November</option>
                 <option value="December">December</option>
               </select>
-              <div>
-                <div>{chart}</div>
-              </div>
+              
+               {chart}
+             
             </div>
           </div>
         </div>

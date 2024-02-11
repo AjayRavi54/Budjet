@@ -3,22 +3,18 @@
     "name": "d",
     "email": "d",
     "pass_word": "d",
-    "salary": "29292",
+    "salary": "20654",
     "expensoves": [
       [
         "January",
         [
           [
-            "food",
-            2100
-          ],
-          [
-            "car",
+            "movie",
             2000
           ],
           [
-            "entertainment",
-            10000
+            "entertaiment",
+            1000
           ]
         ]
       ],
@@ -57,8 +53,8 @@
         "June",
         [
           [
-            "food",
-            123456
+            "movie",
+            1000
           ]
         ]
       ],
@@ -102,11 +98,24 @@
     "name": "ajay",
     "email": "rajay@gmail.com",
     "pass_word": "1234567890",
-    "salary": "123456",
+    "salary": "20000",
     "expensoves": [
       [
         "January",
-        []
+        [
+          [
+            "entrtaiment",
+            1000
+          ],
+          [
+            "food",
+            100
+          ],
+          [
+            "car",
+            10000
+          ]
+        ]
       ],
       [
         "February",
@@ -126,7 +135,16 @@
       ],
       [
         "June",
-        []
+        [
+          [
+            "entrtaiment",
+            1000
+          ],
+          [
+            "food",
+            1000
+          ]
+        ]
       ],
       [
         "July",

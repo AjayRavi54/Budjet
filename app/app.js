@@ -103,9 +103,18 @@ app.post("/setexp", async (req, res) => {
     res.send(true);
   }
 });
+app.post("/todel", async (req, res) => {
+  const json = await fs.readFileSync("login.json", "utf8");
+  arr = JSON.parse(json);
+  findarr = arr.map((ob) => ob.name);
+  ind = findarr.indexOf(req.body.name);
 
- 
+  arr[ind].expensoves[req.body.i][1].splice(req.body.d, 1);
+  js = JSON.stringify(arr, null, 1);
+  fs.writeFileSync("login.json", js);
 
+  res.send("ok");
+});
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

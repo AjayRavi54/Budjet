@@ -20,7 +20,7 @@ const MyChart = (props) => {
           labels: props.value.reason,
           datasets: [
             {
-              label: "My First Dataset",
+              label: "",
               data: props.value.amount,
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
@@ -71,7 +71,7 @@ const MyChart = (props) => {
     };
 
     buildChart();
-    console.log(props.value);
+    
     return () => {
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy(); // Destroy chart instance on unmount
@@ -80,10 +80,10 @@ const MyChart = (props) => {
   }, [props.value]);
 
   return (
-    <div style={{ width: "300px", height: "300px" }}>
+    <div className="for_chart">
       {" "}
       {/* Adjust the size as needed */}
-      <canvas ref={chartRef} />
+      <canvas  className="for_chart_in" ref={chartRef} />
     </div>
   );
 };

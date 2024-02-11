@@ -143,3 +143,86 @@ li {
   position: absolute;
   transform: translate(95vw, 95vh);
 }
+
+.for_chart {
+  width: 300px;
+  height: 300px;
+}
+.button_in_addexp {
+  width: 10vw;
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .root {
+    background: linear-gradient(to right, rgb(51, 24, 24), rgb(24, 24, 50));
+  }
+  .char_and_table {
+    gap: 10vw;
+  }
+  .login {
+    width: 50vw;
+    height: 70vh;
+  }
+}
+@media (min-width: 319px) and (max-width: 426px) {
+  .login {
+    height: 50vh;
+    width: 60vw;
+  }
+  .char_and_table {
+    display: flex;
+    flex-direction: column;
+    transform: translate(0%,-10vh);
+    justify-content: center;
+    align-items: center;
+    width: 99vw;
+  }
+  .button_for_change_salaary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 53vw;
+  }
+  .for_chart{
+    width: 200px;
+    height: 200px;
+  }
+  .charname_in{
+  
+    transform: translate(0%,0vh);
+  }
+  .chartname{
+    height: 30vh;
+  }
+  .root{
+    height: 100vh;
+  }
+  .tableout{
+    width:99vw
+  }
+  .table{
+    width:99vw
+  }
+  .table_next{
+    width:99vw
+  }
+  .namerate{
+    width:80vw
+  }
+  .permonth{
+    width:80vw
+  }
+  .namer{
+    width:40vw
+  }
+  .rate{
+    width:20vw
+  }
+  .button_in_addexp {
+    width: 40vw;
+    transform: translate(0%,-5vh);
+}
+.logut{
+  transform: translate(82vw, 95vh);
+}
+}
